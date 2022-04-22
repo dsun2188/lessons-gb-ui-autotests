@@ -14,7 +14,26 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
 
 @DisplayName("Треугольник")
-public class TriangleTest {
+public class AssertTriangleTest {
+
+   /* @BeforeEach
+    void setUp() {
+        logger.debug("BeforeEach");
+    }
+    @AfterEach
+    void tearDown() {
+        logger.debug("AfterEach");
+    }
+    @BeforeAll
+    static void beforeAll() {
+        logger.debug("BeforeAll");
+    }
+    @AfterAll
+    static void afterAll() {
+        logger.debug("AfterAll");
+    }*/
+
+
 
     /*@Test
     @DisplayName("Периметр треугольника: прямоугольный треугольник")
