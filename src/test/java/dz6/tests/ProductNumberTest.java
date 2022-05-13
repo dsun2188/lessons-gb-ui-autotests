@@ -2,9 +2,9 @@ package dz6.tests;
 
 import dz5.BaseTest;
 import dz6.pages.MainPage;
+import dz6.pages.ProductPage;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
@@ -13,22 +13,19 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ProductInCartTest extends BaseTest {
+public class ProductNumberTest extends BaseTest {
+    private static final String URL = "https://gauss-online.ru/gauss/2854/102802006-lampa-gauss-led-filament-st64-e27-6w-gold-550lm-2400k-1-10-40/";
 
-    private static final String URL = "https://gauss-online.ru/";
-
-    @ParameterizedTest
-    @DisplayName("Корректное отображение в корзине выбранного товара")
-    @ValueSource(strings = {"Лампа Gauss LED Filament ST64 E27 6W Gold 550lm 2400К 1/10/40"})
-    void ProductInCart (String productName) throws InterruptedException {
+    @Test
+    @DisplayName("Тест отображения в корзине двух товаров одного артикля")
+    void filterPriceTest() {
 
         webDriver.get(URL);
 
-        new MainPage(webDriver).chooseProduct()
+        new ProductPage(webDriver).sumProduct()
                 .putInCart()
                 .goToCart()
-                .checkCart();
+                .checkSumCart();
     }
-
 }
 
