@@ -1,4 +1,4 @@
-package org.example.dz5;
+package dz5;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;

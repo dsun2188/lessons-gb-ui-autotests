@@ -1,25 +1,18 @@
-package org.example.dz5;
+package dz5;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
-
-public class AuthGausPositiveTest extends BaseTest{
+public class AuthGausNegativeTest extends BaseTest{
 
     @Test
-    @DisplayName("Позитивный тест - верный логин и пароль")
-    void successfulAuthTest() throws InterruptedException {
+    @DisplayName("Негативный тест - некорректный логин или пароль")
+    void failedAuthTest() throws InterruptedException {
 
         webDriver.get("https://gauss-online.ru/");
         webDriver.manage().window().setSize(new Dimension(1300,720));
@@ -31,13 +24,9 @@ public class AuthGausPositiveTest extends BaseTest{
         WebElement authForm = webDriver.findElement(authFormLocator);
 
         authForm.findElement(By.name("USER_LOGIN")).sendKeys("inv");
-        authForm.findElement(By.name("USER_PASSWORD")).sendKeys("123456");
+        authForm.findElement(By.name("USER_PASSWORD")).sendKeys("invalid_password");
         authForm.findElement(By.xpath("//form[@name='form_auth']//input[@name='Login']")).click();
 
-        webDriver.findElement(By.linkText("Выход")).click();
-
-        new WebDriverWait(webDriver, 10).until(ExpectedConditions.presenceOfElementLocated(By.linkText("Вход")));
-
+        new WebDriverWait(webDriver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//font[@class='errortext']")));
     }
-
 }

@@ -1,4 +1,4 @@
-package org.example.dz5;
+package dz5;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
